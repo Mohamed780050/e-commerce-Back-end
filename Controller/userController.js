@@ -50,6 +50,8 @@ async function UpdateAUser(req, res) {
       password,
       checkoutUser.password
     );
+    if (newpassword === password)
+      return res.status(400).json({ message: "Stop fooling around" });
     if (!checkoutPassword) {
       res.status(400).json({ message: "checkout Your passworld" });
     }
