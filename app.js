@@ -4,6 +4,7 @@ import logTheEvent from "./middlewares/loger.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import user from "./routes/userRoute.js";
+import products from "./routes/ProductsRoute.js";
 dotenv.config();
 const port = process.env.port;
 const app = express();
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 });
 app.use("^/$", (req, res) => res.statusCode(404));
 app.use("/users", user);
+app.use("/products", products);
 app.all("/*", (req, res) => res.sendStatus(404));
 // incase if there is an error
 app.use((err, req, res, next) => {
